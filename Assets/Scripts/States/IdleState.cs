@@ -1,24 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class IdleState : Grounded
 {
     private float _horizontalInput;
-    public IdleState(PlayerMovement stateMachine) : base("IdleState", stateMachine) { }
+    private bool jump;
+    private bool dash;
+    private bool run;
+    public IdleState(PlayerMovement player, StateMachine stateMachine) : base(player, stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
-        _horizontalInput = 0f;
+        jump = false;
+        //dash = false;
+        run = false;
         //player.rb.velocity = Vector2.zero;
+    }
+    public override void HandleInput()
+    {
+        base.HandleInput();
+        dash = Input.GetKey(KeyCode.C);
+        jump = Input.GetKey(KeyCode.Space);
     }
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        _horizontalInput = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(_horizontalInput) > Mathf.Epsilon)
-            stateMachine.ChangeState(((PlayerMovement) stateMachine).runningState);
+        //if (dash)
+        //{
+        //    stateMachine.ChangeState(player.);
+        //}
+        if (jump)
+        {
+            stateMachine.ChangeState(player.jumping);
+        }
+        else if (run)
+        {
+            stateMachine.ChangeState(player.run);
+        }
+        //_horizontalInput = Input.GetAxis("Horizontal");
+        //if (Mathf.Abs(_horizontalInput) > Mathf.Epsilon)
+        //    stateMachine.ChangeState(((PlayerMovement) stateMachine).runningState);
     }
 
     //public override void PhysicsUpdate()

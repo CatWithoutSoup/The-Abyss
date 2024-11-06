@@ -5,20 +5,18 @@ using UnityEngine;
 public class RunningState : Grounded
 {
     private float _horizontalInput;
-    public RunningState(PlayerMovement stateMachine) : base("RunningState", stateMachine) { }
+    public RunningState(PlayerMovement player, StateMachine stateMachine) : base(player, stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
-        _horizontalInput = 0f;
+        speed = player.speed;
+        //_horizontalInput = 0f;
         //player.OnRun.Invoke(); // Вызов анимации или звуков для бега
     }
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        _horizontalInput = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(_horizontalInput) < Mathf.Epsilon)
-            stateMachine.ChangeState(_pm.idleState);
 
         //// Получение горизонтального ввода для управления скоростью персонажа
         //float horizontalInput = Input.GetAxis("Horizontal");
@@ -42,9 +40,7 @@ public class RunningState : Grounded
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        Vector2 vel = _pm.rb.velocity;
-        vel.x = _horizontalInput * _pm.speed;
-        _pm.rb.velocity = vel;
+        player.Move(speed);
         //player.rb.velocity = new Vector2(player.moveVector.x, player.rb.velocity.y); // Обновление скорости по горизонтали
     }
 

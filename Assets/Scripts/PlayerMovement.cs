@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 //[RequireComponent(typeof(SpriteRenderer),typeof(Rigidbody2D))]
-public class PlayerMovement : PlayerStateMachine
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private UnityEvent OnGroundTouch;
     [SerializeField] public UnityEvent OnDash;
@@ -42,20 +42,11 @@ public class PlayerMovement : PlayerStateMachine
     [SerializeField] public float dashImpulse = 0.3f;
     [SerializeField] public bool isDashCooldown = false;
 
-    //public PlayerStateMachine StateMachine;
-    //public PlayerState idleState;
-    //public PlayerState runningState;
-    //public PlayerState jumpingState;
-    //public PlayerState fallingState;
-    //public PlayerState wallGrabState;
-    //public PlayerState wallClimbState;
-    //public PlayerState dashingState;
-    [HideInInspector]
-    public IdleState idleState;
-    [HideInInspector]
-    public RunningState runningState;
-    [HideInInspector]
-    public Jumping jumpingState;
+    public StateMachine movementSM;
+    public IdleState idle;
+    public RunningState run;
+    public JumpingState jumping;
+
 
     public float gravityDef;
     private bool jumpControl;
@@ -70,31 +61,26 @@ public class PlayerMovement : PlayerStateMachine
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        //StateMachine = new PlayerStateMachine();
-        //idleState = new IdleState(this);
-        //runningState = new RunningState(this);
-        //jumpingState = new Jumping(this);
-        //wallGrabState = new WallGrabState(this, StateMachine);
-        //wallClimbState = new WallClimbState(this, StateMachine);
-        //dashingState = new DashingState(this, StateMachine);
-        //fallingState = new FallingState(this, StateMachine);
     }
-    //protected override PlayerState GetInitialState()
-    //{
-    //    return idleState;
-    //}
+
     private void Start()
     {
         gravityDef = rb.gravityScale;
         airDashesRemaining = maxAirDash;
         obstacleLayer = LayerMask.GetMask("Ground", "Wall");
         OnGroundTouch.AddListener(UpdateDash);
-        //StateMachine.Initialize(idleState);
+        movementSM = gameObject.AddComponent<StateMachine>();
+
+        idle = new IdleState(this, movementSM);
+        run = new RunningState(this, movementSM);
+        jumping = new JumpingState(this, movementSM);
+
+        movementSM.Initialize(idle);
 
     }
-    private new void Update()
+    private void Update()
     {
-        Move();
+        Move(speed);
         Jump();
         OnGround();
         Reflect();
@@ -102,14 +88,17 @@ public class PlayerMovement : PlayerStateMachine
         MoveOnWall();
         CheckGrounded();
         HandleDashInput();
-        
-    }
-    //private void FixedUpdate()
-    //{
-    //StateMachine.FixedUpdate();
-    //}
+        movementSM.CurrentState.HandleInput();
 
-    void Move()
+        movementSM.CurrentState.LogicUpdate();
+
+    }
+    private void FixedUpdate()
+    {
+        movementSM.CurrentState.PhysicsUpdate();
+    }
+
+    public void Move(float speed)
     {
         if (wallGrab)
             return;
@@ -129,7 +118,7 @@ public class PlayerMovement : PlayerStateMachine
     }
 
 
-    void Jump()
+    public void Jump()
     {
         if (Input.GetKey(KeyCode.Space))
         {
@@ -168,7 +157,6 @@ public class PlayerMovement : PlayerStateMachine
 
         float dashTimeElapsed = 0f;
         Vector2 dashStartPosition = rb.position;
-        //Vector2 dashEndPosition = dashStartPosition + direction * dashDistance;
         while (dashTimeElapsed < dashDuration)
         {
             RaycastHit2D hit = Physics2D.Raycast(dashStartPosition, direction, dashDistance, obstacleLayer);
@@ -194,7 +182,7 @@ public class PlayerMovement : PlayerStateMachine
         lockDash = false;
     }
     
-    void CheckGrounded()
+    public void CheckGrounded()
     {
         if (isGrounded && !isDashCooldown) { airDashesRemaining = maxAirDash; }
     }

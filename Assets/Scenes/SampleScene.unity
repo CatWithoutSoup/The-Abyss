@@ -2519,6 +2519,7 @@ MonoBehaviour:
   dashDuration: 0.1
   dashImpulse: 10
   isDashCooldown: 0
+  movementSM: {fileID: 0}
   gravityDef: 0
   lockDash: 0
 --- !u!50 &1331466770

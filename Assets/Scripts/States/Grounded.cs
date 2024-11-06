@@ -1,13 +1,13 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 
-public class Grounded : PlayerState
+public class Grounded : State
 {
-    protected PlayerMovement _pm;
-    public Grounded(string name, PlayerMovement stateMachine) : base(name, stateMachine) 
+    protected float speed;
+    public Grounded(PlayerMovement player, StateMachine stateMachine) : base(player, stateMachine) 
     {
-        _pm = stateMachine;
     }
 
     public override void Enter()
@@ -18,8 +18,6 @@ public class Grounded : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (Input.GetKeyUp(KeyCode.Space))
-            stateMachine.ChangeState(_pm.jumpingState);
 
         //// Получение горизонтального ввода для управления скоростью персонажа
         //float horizontalInput = Input.GetAxis("Horizontal");
@@ -37,5 +35,18 @@ public class Grounded : PlayerState
         //else if (Input.GetKeyDown(KeyCode.C) && player.airDashesRemaining > 0 && !player.isDashCooldown)
         //{
         //    stateMachine.ChangeState(player.dashingState); // Переход в DashingState при нажатии на рывок
+    }
+    public override void Exit()
+    {
+        base.Exit();
+    }
+    public override void HandleInput()
+    {
+        base.HandleInput();
+    }
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        
     }
 }
