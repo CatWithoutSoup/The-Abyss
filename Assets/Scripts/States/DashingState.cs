@@ -1,60 +1,40 @@
-//using UnityEngine;
+using UnityEngine;
 
 
-//public class DashingState : PlayerState
-//{
-//    private float dashTimeElapsed;
-//    private Vector2 dashDirection;
+public class DashingState : State
+{
 
-//    public DashingState(PlayerMovement player, PlayerStateMachine stateMachine) : base(player, stateMachine) { }
+    public DashingState(PlayerMovement player, StateMachine stateMachine) : base(player, stateMachine) { }
 
-//    public override void Enter()
-//    {
-//        base.Enter();
-//        dashTimeElapsed = 0f;
+    public override void Enter()
+    {
+        base.Enter();
+        player.anim.SetBool("IsDash", true);
+        player.anim.Play("Dash");
+        player.OnDash.Invoke(); // Запуск анимации или эффекта рывка
 
-//        player.OnDash.Invoke(); // Запуск анимации или эффекта рывка
+    }
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+        if (Input.GetAxis("Horizontal") == 0 && player.isGrounded)
+            stateMachine.ChangeState(player.idle);
+        else if (player.rb.velocity.y < 0)
+            stateMachine.ChangeState(player.fall);
+        else if (Input.GetKey(KeyCode.X))
+            stateMachine.ChangeState(player.grab);
 
-//        player.lockDash = true;
-//        player.rb.gravityScale = 0;      // Отключение гравитации
-//        player.rb.velocity = Vector2.zero; // Сброс скорости
+    }
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+        player.CheckGrounded();
+        //player.HandleDashInput();
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        player.anim.SetBool("IsDash", false);
+    }
 
-//        dashDirection = player.GetDashDirection();  // Получаем направление рывка
-//    }
-
-//    public override void LogicUpdate()
-//    {
-//        base.LogicUpdate();
-
-//        if (dashTimeElapsed < player.dashDuration)
-//        {
-//            dashTimeElapsed += Time.fixedDeltaTime;
-
-//            // Перемещение персонажа в направлении рывка
-//            RaycastHit2D hit = Physics2D.Raycast(player.rb.position, dashDirection, player.dashDistance, player.obstacleLayer);
-//            if (hit.collider != null)
-//            {
-//                player.rb.position = hit.point - dashDirection * 0.1f; // Остановка перед препятствием
-//                Exit();
-//            }
-//            else
-//            {
-//                player.rb.MovePosition(player.rb.position + dashDirection * player.dashImpulse * Time.fixedDeltaTime);
-//            }
-//        }
-//        else
-//        {
-//            stateMachine.ChangeState(player.fallingState); // Переход в состояние падения после рывка
-//        }
-//    }
-
-//    public override void Exit()
-//    {
-//        base.Exit();
-
-//        player.rb.gravityScale = player.gravityDef;  // Восстанавливаем гравитацию
-//        player.rb.velocity = Vector2.zero;           // Останавливаем персонажа
-//        player.StartCoroutine(player.DashCooldown()); // Запускаем перезарядку рывка
-//        player.lockDash = false;
-//    }
-//}
+}

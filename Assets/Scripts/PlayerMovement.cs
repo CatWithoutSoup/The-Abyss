@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private SpriteRenderer sr;
     public Vector2 moveVector;
-    private Animator anim;
+    public Animator anim;
 
     [SerializeField] public bool wallGrab;
     [SerializeField] private float groundRadius = 0.3f;
@@ -46,12 +46,15 @@ public class PlayerMovement : MonoBehaviour
     public IdleState idle;
     public RunningState run;
     public JumpingState jumping;
-
+    public DashingState dash;
+    public FallingState fall;
+    public WallClimbState climb;
+    public WallGrabState grab;
 
     public float gravityDef;
     private bool jumpControl;
     private int jumpIter = 0;
-    private bool faceRight = true;
+    public bool faceRight = true;
     public bool lockDash = false;
     private Coroutine dashCooldownCoroutine;
 
@@ -74,19 +77,23 @@ public class PlayerMovement : MonoBehaviour
         idle = new IdleState(this, movementSM);
         run = new RunningState(this, movementSM);
         jumping = new JumpingState(this, movementSM);
+        dash = new DashingState(this, movementSM);
+        fall = new FallingState(this, movementSM);
+        climb = new WallClimbState(this, movementSM);
+        grab = new WallGrabState(this, movementSM);
 
         movementSM.Initialize(idle);
 
     }
     private void Update()
     {
-        Move(speed);
-        Jump();
+        //Move();
+        //Jump();
         OnGround();
-        Reflect();
+        //Reflect();
         OnWall();
         MoveOnWall();
-        CheckGrounded();
+        //CheckGrounded();
         HandleDashInput();
         movementSM.CurrentState.HandleInput();
 
@@ -98,18 +105,15 @@ public class PlayerMovement : MonoBehaviour
         movementSM.CurrentState.PhysicsUpdate();
     }
 
-    public void Move(float speed)
+    public void Move()
     {
-        if (wallGrab)
-            return;
         moveVector.x = Input.GetAxis("Horizontal");
-        anim.SetFloat("moveX", Mathf.Abs(moveVector.x));
         rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
     }
 
-    void Reflect()
+    public void Reflect(float horizontalInput)
     {
-        if((moveVector.x > 0 && !faceRight) || (moveVector.x < 0  && faceRight))
+        if((horizontalInput > 0 && !faceRight) || (horizontalInput < 0  && faceRight))
         {
             transform.localScale *= new Vector2(-1, 1);
             faceRight = !faceRight;
@@ -120,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Z))
         {
             if (isGrounded) { jumpControl = true; }
         }
@@ -140,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
+        anim.SetBool("OnGround", isGrounded);
         if (!wasGrounded && isGrounded) { OnGroundTouch.Invoke(); }
     }
     void OnWall()
@@ -187,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && !isDashCooldown) { airDashesRemaining = maxAirDash; }
     }
 
-    void HandleDashInput()
+    public void HandleDashInput()
     {
         if (Input.GetKeyDown(KeyCode.C) && !lockDash && airDashesRemaining > 0)
         {
@@ -222,7 +227,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void MoveOnWall()
+    public void MoveOnWall()
     {
         if (isWalled && Input.GetKeyDown(KeyCode.X)) { wallGrab = true; }
         if (!isWalled || Input.GetKeyUp(KeyCode.X)) { wallGrab = false; }
@@ -260,11 +265,6 @@ public class PlayerMovement : MonoBehaviour
     public void UpdateDash()
     {
         airDashesRemaining = maxAirDash;
-        if (dashCooldownCoroutine != null)
-        {
-            StopCoroutine(dashCooldownCoroutine);
-        }
-        dashCooldownCoroutine = StartCoroutine(DashCooldown());
-        
+        isDashCooldown = false;
     }
 }
