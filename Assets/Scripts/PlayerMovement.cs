@@ -18,7 +18,15 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sr;
     public Vector2 moveVector;
     public Animator anim;
+    public float boxCastDistanceGround = 0.1f;
+    public float boxWidthGround = 0.45f;
+    public float boxHeightGround = 0.15f;
+    public float boxCastDistanceWall = 0.1f;
+    public float boxWidthWall = 0.15f;
+    public float boxHeightWall = 0.15f;
 
+    [HideInInspector] public bool isWallJumping;
+    //public Vector2 wallJumpDirection = new Vector2(1, 1); // Направление прыжка
     [SerializeField] public bool wallGrab;
     [SerializeField] private float groundRadius = 0.3f;
     [SerializeField] private float wallRadius = 0.3f;
@@ -37,10 +45,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int maxAirDash = 1;
     [SerializeField] public float dashCooldown = 0.3f;
     [SerializeField] public int airDashesRemaining;
-    [SerializeField] public float dashDistance = 5f;
-    [SerializeField] public float dashDuration = 0.1f;
+    [SerializeField] public float dashDistance = 15f;
+    [SerializeField] public float dashDuration = 0.3f;
     [SerializeField] public float dashImpulse = 0.3f;
     [SerializeField] public bool isDashCooldown = false;
+    [SerializeField] public int jumpCount = 1;
+    [SerializeField] public float wallJumpHorizontalForce = 1.5f;
+    [Header("WallJump")]
+    [SerializeField] public float jumpHoldTime = 0f;
+    public float verticalWallJumpForce = 5f;
+    public float wallJumpForce = 5f; // Сила прыжка от стены
+    public float maxJumpHoldTime = 0.2f;
+    private bool isHoldingWall;
 
     public StateMachine movementSM;
     public IdleState idle;
@@ -50,6 +66,9 @@ public class PlayerMovement : MonoBehaviour
     public FallingState fall;
     public WallClimbState climb;
     public WallGrabState grab;
+    public WallSlideState slide;
+    public WallJumpState wallJump;
+    public CanvasGroup visibleStaminaBar;
 
     public float gravityDef;
     private bool jumpControl;
@@ -57,13 +76,16 @@ public class PlayerMovement : MonoBehaviour
     public bool faceRight = true;
     public bool lockDash = false;
     private Coroutine dashCooldownCoroutine;
+    public Stamina stamina;
+    //private StaminaBarUI can;  
 
- 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        //can = GetComponent<StaminaBarUI>();  
     }
 
     private void Start()
@@ -73,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         obstacleLayer = LayerMask.GetMask("Ground", "Wall");
         OnGroundTouch.AddListener(UpdateDash);
         movementSM = gameObject.AddComponent<StateMachine>();
+        stamina = gameObject.GetComponent<Stamina>();
 
         idle = new IdleState(this, movementSM);
         run = new RunningState(this, movementSM);
@@ -81,6 +104,8 @@ public class PlayerMovement : MonoBehaviour
         fall = new FallingState(this, movementSM);
         climb = new WallClimbState(this, movementSM);
         grab = new WallGrabState(this, movementSM);
+        slide = new WallSlideState(this, movementSM);
+        wallJump = new WallJumpState(this, movementSM);
 
         movementSM.Initialize(idle);
 
@@ -95,10 +120,14 @@ public class PlayerMovement : MonoBehaviour
         MoveOnWall();
         //CheckGrounded();
         HandleDashInput();
+        //WallJump();
         movementSM.CurrentState.HandleInput();
 
         movementSM.CurrentState.LogicUpdate();
-
+        //if (isHoldingWall && Input.GetKeyDown(KeyCode.Z)) // Прыжок от стены
+        //{
+        //    WallJump();
+        //}
     }
     private void FixedUpdate()
     {
@@ -113,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Reflect(float horizontalInput)
     {
+        //can.visibleStaminaBar.transform.localScale = new Vector3(1, 1, 1);
         if((horizontalInput > 0 && !faceRight) || (horizontalInput < 0  && faceRight))
         {
             transform.localScale *= new Vector2(-1, 1);
@@ -143,13 +173,52 @@ public class PlayerMovement : MonoBehaviour
     void OnGround()
     {
         bool wasGrounded = isGrounded;
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
+        isGrounded = Physics2D.BoxCast(
+            groundCheck.position,
+            new Vector2(boxWidthGround, boxHeightGround),
+            0f,
+            Vector2.down,
+            boxCastDistanceGround,
+            groundMask
+        );
+        //isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundMask);
         anim.SetBool("OnGround", isGrounded);
         if (!wasGrounded && isGrounded) { OnGroundTouch.Invoke(); }
     }
+    private void OnDrawGizmos()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = Color.green;
+
+            // Отрисовка области проверки земли
+            Gizmos.DrawWireCube(
+                groundCheck.position + Vector3.down * boxCastDistanceGround / 2,
+                new Vector3(boxWidthGround, boxHeightGround, 0)
+            );
+        }
+
+        if (wallCheck != null)
+        {
+            Gizmos.color = Color.red;
+
+            // Отрисовка области проверки стены
+            Gizmos.DrawWireCube(
+                wallCheck.position + Vector3.down * boxCastDistanceWall / 2,
+                new Vector3(boxWidthWall, boxHeightWall, 0)
+            );
+        }
+    }
     void OnWall()
     {
-        isWalled = Physics2D.OverlapCircle(wallCheck.position, wallRadius, wallMask);
+        isWalled = Physics2D.BoxCast(
+            wallCheck.position,
+            new Vector2(boxWidthWall, boxHeightWall),
+            0f,
+            Vector2.down,
+            boxCastDistanceWall,
+            groundMask);
+        anim.SetBool("IsWalled", isWalled);
     }
 
     public IEnumerator Dash(Vector2 direction)
@@ -167,8 +236,19 @@ public class PlayerMovement : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(dashStartPosition, direction, dashDistance, obstacleLayer);
             if (hit.collider != null)
             {
-                rb.position = hit.point - direction * 0.1f;
-                break;
+                float remainingDistance = Vector2.Distance(rb.position, hit.point - direction * 0.1f);
+                if (hit.collider.CompareTag("Platform"))
+                {
+                    dashTimeElapsed += Time.fixedDeltaTime;
+                    rb.MovePosition(rb.position + direction * dashImpulse * Time.fixedDeltaTime);
+                    yield return new WaitForFixedUpdate();
+                    continue;
+                }
+                else if (remainingDistance <= dashImpulse * Time.fixedDeltaTime)
+                {
+                    rb.MovePosition(hit.point - direction * 0.1f);
+                    break;
+                }
             }
 
             rb.MovePosition(rb.position + direction * dashImpulse * Time.fixedDeltaTime);
@@ -267,4 +347,40 @@ public class PlayerMovement : MonoBehaviour
         airDashesRemaining = maxAirDash;
         isDashCooldown = false;
     }
+    public void AddExtraJumps()
+    {
+
+    }
+    //void WallJump()
+    //{
+    //    isWallJumping = true;
+    //    isHoldingWall = false; // Отпускаем стену
+
+    //    jumpControl = true;
+
+    //    rb.velocity = Vector2.zero; // Сброс скорости
+    //    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // Начальный импульс
+
+    //    StartCoroutine(ControlWallJump());
+    //}
+
+    //private IEnumerator ControlWallJump()
+    //{
+    //    float jumpDuration = 0f;
+
+    //    while (Input.GetKey(KeyCode.Z) && jumpDuration < jumpValueIter)
+    //    {
+    //        rb.AddForce(Vector2.up * jumpForce / 3f); // Контроль высоты прыжка
+    //        jumpDuration += Time.deltaTime;
+    //        yield return null;
+    //    }
+
+    //    jumpIter = 0;
+    //    isWallJumping = false;
+
+    //    if (Input.GetKey(KeyCode.X)) // Если удерживаем кнопку захвата
+    //    {
+    //        isHoldingWall = true;
+    //    }
+    //}
 }

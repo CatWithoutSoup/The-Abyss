@@ -8,6 +8,7 @@ public class FallingState : State
     public override void Enter()
     {
         base.Enter();
+        player.anim.Play("Fall");
     }
 
     public override void LogicUpdate()
@@ -16,17 +17,20 @@ public class FallingState : State
 
         if (player.isGrounded)
             stateMachine.ChangeState(player.idle);
+        else if (player.isGrounded && Input.GetAxisRaw("Horizontal") != 0)
+            stateMachine.ChangeState(player.run);
         else if (Input.GetKey(KeyCode.C))
             stateMachine.ChangeState(player.dash);
         else if (Input.GetKey(KeyCode.X))
             stateMachine.ChangeState(player.grab);
+        else if (player.isWalled && player.rb.velocity.y < 0)
+            stateMachine.ChangeState(player.slide);
 
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        player.anim.Play("Fall");
         float horizontalInput = Input.GetAxis("Horizontal");
         player.rb.velocity = new Vector2(horizontalInput * player.speed, player.rb.velocity.y);
         player.Reflect(horizontalInput);

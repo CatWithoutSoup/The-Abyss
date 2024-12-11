@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
+
 
 [System.Serializable]
 public class StaminaChangeEvent : UnityEvent<float> { }
@@ -14,7 +13,7 @@ public class Stamina : MonoBehaviour
 
     //[SerializeField] private Image staminaUI;
     [SerializeField] private float staminaDuration = 5f;
-    [SerializeField] private float currentStamina;
+    [SerializeField] public float currentStamina;
     public StaminaChangeEvent onStaminaChanged;
     private PlayerMovement pm;
 

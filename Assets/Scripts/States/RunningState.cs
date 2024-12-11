@@ -13,14 +13,16 @@ public class RunningState : Grounded
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (Input.GetAxis("Horizontal") == 0)
+        if (Input.GetAxis("Horizontal") == 0 && player.isGrounded)
             stateMachine.ChangeState(player.idle);
-        else if (Input.GetKey(KeyCode.Z))
+        if (player.isGrounded && Input.GetKey(KeyCode.Z))
             stateMachine.ChangeState(player.jumping);
         else if (Input.GetKey(KeyCode.X))
             stateMachine.ChangeState(player.grab);
         else if (Input.GetKey(KeyCode.C))
             stateMachine.ChangeState(player.dash);
+        else if (!player.isGrounded)
+            stateMachine.ChangeState(player.fall);
 
     }
     

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
+
 
 public class IdleState : Grounded
 {
@@ -31,8 +29,8 @@ public class IdleState : Grounded
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (jump)
-            stateMachine.ChangeState(player.jumping);
+        if (player.isGrounded && jump)
+            stateMachine.ChangeState(player.jumping);       
         else if (run)
             stateMachine.ChangeState(player.run);
         else if (dash)
@@ -51,6 +49,6 @@ public class IdleState : Grounded
     {
         base.PhysicsUpdate();
         player.anim.SetFloat("moveX", 0f);
-        player.rb.velocity = Vector2.zero;
+        //player.rb.velocity = Vector2.zero;
     }
 }

@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class JumpingState : State
 {
-    public JumpingState(PlayerMovement player, StateMachine stateMachine) : base(player, stateMachine) 
-    {
-    }
+    public JumpingState(PlayerMovement player, StateMachine stateMachine) : base(player, stateMachine) { }
 
     public override void Enter()
     {
@@ -16,12 +14,19 @@ public class JumpingState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (player.rb.velocity.y < 0)
+        if (player.rb.velocity.y < 0 && player.isWalled)
+        {
+            stateMachine.ChangeState(player.slide);
+        }
+        else if (player.rb.velocity.y < 0 && !player.isGrounded)
+        {
             stateMachine.ChangeState(player.fall);
+        }
         else if (Input.GetKey(KeyCode.C))
             stateMachine.ChangeState(player.dash);
-        else if (Input.GetKey(KeyCode.X))
+        else if (Input.GetKey(KeyCode.X) && player.isWalled)
             stateMachine.ChangeState(player.grab);
+        
     }
     
 
