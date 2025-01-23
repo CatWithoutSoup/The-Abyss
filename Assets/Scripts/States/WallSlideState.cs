@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class WallSlideState : State
 {
-    private bool isJumpingOffWall; // Флаг для отслеживания прыжка
-    private bool jumpControl;     // Контроль прыжка (удержание кнопки)
-    private int jumpIter;         // Итерации для контролируемого прыжка
-    private int jumpValueIter = 60; // Максимальное количество итераций прыжка
-    private float jumpForce = 2f;  // Базовая сила прыжка
+    private bool isJumpingOffWall; 
+    private bool jumpControl;     
+    private int jumpIter;        
+    private int jumpValueIter = 60; 
+    private float jumpForce = 2f;  
 
     public WallSlideState(PlayerMovement player, StateMachine stateMachine) : base(player, stateMachine) { }
 
@@ -21,13 +21,12 @@ public class WallSlideState : State
     public override void HandleInput()
     {
         base.HandleInput();
-
-        // Проверка удержания кнопки прыжка
         if (Input.GetKey(KeyCode.Z))
         {
             if (player.isWalled)
             {
                 jumpControl = true;
+                
             }
         }
         else
@@ -51,11 +50,6 @@ public class WallSlideState : State
         {
             stateMachine.ChangeState(player.grab);
         }
-        //else if (Input.GetKey(KeyCode.Z))
-        //{
-        //    stateMachine.ChangeState(player.wallJump);
-        //}
-
 
     }
 
@@ -64,13 +58,11 @@ public class WallSlideState : State
         isJumpingOffWall = true;
         if (jumpControl)
         {
-            // Логика контролируемого прыжка
             if (jumpIter++ < jumpValueIter)
             {
-                // Направление прыжка от стены (диагональный прыжок)
                 float jumpDirection = player.faceRight ? -1 : 1; // Направление противоположное стене
-                float horizontalForce = jumpForce * 1f;       // Горизонтальная составляющая
-                float verticalForce = jumpForce / (jumpIter / 3f); // Вертикальная составляющая
+                float horizontalForce = jumpForce * 2f;       // Горизонтальная составляющая
+                float verticalForce = jumpForce / (jumpIter / 2f); // Вертикальная составляющая
                 player.rb.velocity = new Vector2(jumpDirection * horizontalForce, verticalForce);
             }
         }
@@ -79,8 +71,6 @@ public class WallSlideState : State
             jumpIter = 0;
             jumpControl = false;
             isJumpingOffWall = false;
-
-            // Завершаем прыжок, переходя в состояние прыжка
         }
     }
 
@@ -95,9 +85,9 @@ public class WallSlideState : State
     public override void Exit()
     {
         base.Exit();
-        jumpIter = 0; // Сбрасываем итерации
-        jumpControl = false; // Сбрасываем контроль прыжка
-        isJumpingOffWall = false; // Сбрасываем флаг прыжка
+        jumpIter = 0; 
+        jumpControl = false; 
+        isJumpingOffWall = false; 
         player.isWalled = false;
     }
 }

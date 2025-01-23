@@ -8,7 +8,9 @@ public class Geyser : MonoBehaviour
     [SerializeField] private float interval = 1.5f;  // Интервал между толчками
     private bool isPlayerInside = false;             // Проверка, находится ли персонаж внутри гейзера
     private Rigidbody2D playerRb;                    // Rigidbody персонажа
-
+    [SerializeField] private AudioSource geyserSound;
+    [SerializeField] private GameObject geyserParticle;
+    [SerializeField] private Transform particleSpawn;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -38,6 +40,8 @@ public class Geyser : MonoBehaviour
         // Если персонаж находится внутри гейзера
         if (isPlayerInside && playerRb != null)
         {
+            geyserSound.Play();
+            Instantiate(geyserParticle, particleSpawn.position, Quaternion.identity);
             playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
             // Определяем направление (куда персонаж смотрит)
             Vector2 pushDirection = new Vector2(0, 1); // Толчок по горизонтали

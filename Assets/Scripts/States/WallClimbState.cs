@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WallClimbState : State
@@ -21,14 +19,9 @@ public class WallClimbState : State
         base.LogicUpdate();
 
         if (!player.isWalled || Input.GetKeyUp(KeyCode.X))
-            stateMachine.ChangeState(player.fall);  // Если игрок отпускает кнопку, то переключаемся на падение
+            stateMachine.ChangeState(player.fall);  
         else if (player.rb.velocity.y == 0)
             stateMachine.ChangeState(player.grab);
-
-
-
-        //float verticalMove = Input.GetAxisRaw("Vertical");
-        //player.rb.velocity = new Vector2(player.rb.velocity.x, verticalMove * player.climbSpeed);
     }
     public override void PhysicsUpdate()
     {

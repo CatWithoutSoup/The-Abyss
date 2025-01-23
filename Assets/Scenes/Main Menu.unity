@@ -2077,7 +2077,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d8f57256cc136ba4fba0e044529b486d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5728732d149d02b44a6144e0d664a474, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3236,10 +3236,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\n\u2190\u2191\u2192\u2193\nZ-
-    \u0420\u044B\u0432\u043E\u043A\nX- \u0417\u0430\u0445\u0432\u0430\u0442 \u0437\u0430
-    \u0441\u0442\u0435\u043D\u0443 \nC - \u0420\u044B\u0432\u043E\u043A \u0432 \u043B\u044E\u0431\u0443\u044E
-    \u0438\u0437 8 \u0441\u0442\u043E\u0440\u043E\u043D\nESC - \u041F\u0430\u0443\u0437\u0430
-    \u0438\u0433\u0440\u044B\n"
+    \u041F\u0440\u044B\u0436\u043E\u043A\nX- \u0417\u0430\u0445\u0432\u0430\u0442
+    \u0437\u0430 \u0441\u0442\u0435\u043D\u0443 \nC - \u0420\u044B\u0432\u043E\u043A
+    \nESC - \u041F\u0430\u0443\u0437\u0430 \u0438\u0433\u0440\u044B\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}

@@ -1,32 +1,23 @@
-//using System.Collections;
-//using System.Collections.Generic;
 //using UnityEngine;
-//using UnityEngine.Events;
 
 //public class BootsOrb : MonoBehaviour
 //{
-//    public UnityEvent BootsCollect;
-//    private PlayerMovement pm;
-
-//    private void Start()
-//    {
-//        GameObject player = GameObject.FindGameObjectWithTag("Player");
-//        if (player != null)
-//        {
-//            pm = player.GetComponent<PlayerMovement>();
-//            BootsCollect.AddListener(pm.UpdateDash);
-//        }
-//        else
-//        {
-//            Debug.LogError("Тег Player не найден");
-//        }
-//    }
+//    public int additionalJumps = 1; // Количество дополнительных прыжков, которое даёт объект
 
 //    private void OnTriggerEnter2D(Collider2D collision)
 //    {
+//        // Проверяем, игрок ли это
 //        if (collision.CompareTag("Player"))
 //        {
-//            BootsCollect.Invoke();
+//            PlayerMovement playerJump = collision.GetComponent<PlayerMovement>();
+//            if (playerJump != null)
+//            {
+//                TestMethod();
+//                // Увеличиваем количество доступных прыжков
+//                playerJump.AddExtraJumps(additionalJumps);
+//            }
+
+//            // Уничтожаем объект после поднятия
 //            Destroy(gameObject);
 //        }
 //    }

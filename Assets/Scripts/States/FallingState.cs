@@ -21,7 +21,7 @@ public class FallingState : State
             stateMachine.ChangeState(player.run);
         else if (Input.GetKey(KeyCode.C))
             stateMachine.ChangeState(player.dash);
-        else if (Input.GetKey(KeyCode.X))
+        else if (Input.GetKey(KeyCode.X) && player.isWalled)
             stateMachine.ChangeState(player.grab);
         else if (player.isWalled && player.rb.velocity.y < 0)
             stateMachine.ChangeState(player.slide);

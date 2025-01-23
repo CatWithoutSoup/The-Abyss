@@ -9,6 +9,9 @@ public class StaminaBarUI : MonoBehaviour
     [SerializeField] private PlayerMovement player;
     [SerializeField] private float staminaDuration = 5f;
     [SerializeField] private float currentStamina;
+    [SerializeField] private Image fillImage;
+    [SerializeField] private Color green = Color.green;
+    [SerializeField] private Color red = Color.red;
 
     public void Awake()
     {
@@ -30,9 +33,17 @@ public class StaminaBarUI : MonoBehaviour
     {
         if (player.wallGrab)
         {
-            //isVisibleFlag = !isVisibleFlag;
             SetVisibility(true);
+            if (currentStamina <= 1.5f)
+            {
+                fillImage.color = red;
+            }
         }
+        else if (player.isGrounded && currentStamina >= 1.5f)
+        {
+            fillImage.color = green;
+        }
+        
         if (currentStamina >= staminaDuration)
         {
             SetVisibility(false);

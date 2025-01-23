@@ -9,17 +9,14 @@ public class PlayerDeath : MonoBehaviour
     {
         player = GetComponent<PlayerMovement>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Death"))
         {
             Die();
-            //gameObject.SetActive(false);
-            //Destroy(gameObject);
-            //LevelManager.instance.Respawn();
         }
     }
-    private void Die()
+    public void Die()
     {
         if (player != null)
         {

@@ -8,6 +8,7 @@ TagManager:
   - BootsOrb
   - Death
   - Platform
+  - Ground
   layers:
   - Default
   - TransparentFX

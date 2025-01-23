@@ -1,5 +1,4 @@
-using TMPro;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 
@@ -34,7 +33,11 @@ public class JumpingState : State
     {
         base.PhysicsUpdate();      
         player.rb.velocity = new Vector2(Input.GetAxis("Horizontal") * player.speed, player.rb.velocity.y);
-        player.Jump();
+        //player.Jump();
         player.Reflect(Input.GetAxis("Horizontal"));
+    }
+    public override void Exit()
+    {
+        base.Exit();
     }
 }

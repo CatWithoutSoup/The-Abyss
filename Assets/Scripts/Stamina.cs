@@ -1,31 +1,25 @@
-
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 [System.Serializable]
 public class StaminaChangeEvent : UnityEvent<float> { }
-
 public class Stamina : MonoBehaviour
-
-
 {
-
-    //[SerializeField] private Image staminaUI;
     [SerializeField] private float staminaDuration = 5f;
     [SerializeField] public float currentStamina;
     public StaminaChangeEvent onStaminaChanged;
     private PlayerMovement pm;
-
+    private SpriteRenderer spriteRenderer;
+    private bool isBlinking = false;
     void Start()
     {
-        //staminaUI.fillAmount = 1f; 
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentStamina = staminaDuration;
         pm = GetComponent<PlayerMovement>();
         onStaminaChanged.Invoke(currentStamina / staminaDuration);
     }
 
-    // Update is called once per frame
     private void Update()
     {
 
@@ -44,7 +38,15 @@ public class Stamina : MonoBehaviour
                     currentStamina -= Time.deltaTime;
                     
                 }
+                else if (Input.GetKeyDown(KeyCode.Z))
+            {
+                    currentStamina -= 1f;
             }
+            }
+        if (currentStamina < 1.5f && !isBlinking)
+        {
+            StartCoroutine(BlinkRed());
+        }
         if (currentStamina <= 0f)
         {
             pm.wallGrab = false;
@@ -52,11 +54,17 @@ public class Stamina : MonoBehaviour
         currentStamina = Mathf.Clamp(currentStamina, 0f, staminaDuration);
         onStaminaChanged.Invoke(currentStamina / staminaDuration);
     }
-    public void UseStamia(float amount)
+    IEnumerator BlinkRed()
     {
-        currentStamina -= amount;
-        currentStamina = Mathf.Clamp(currentStamina, 0f, staminaDuration);
+        isBlinking = true;
+        while (currentStamina < 1.5f)
+        {
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(0.15f);
+            spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(0.15f);
 
-        onStaminaChanged.Invoke(currentStamina / staminaDuration);
+        }
+        isBlinking = false;
     }
 }

@@ -7,6 +7,8 @@ public class OrbDash : MonoBehaviour
 {
     public UnityEvent OrbCollect;
     private PlayerMovement pm;
+    [SerializeField] private SpriteRenderer SpriteRenderer;
+    [SerializeField] private Collider2D Collider2D;
 
     private void Start()
     {
@@ -27,10 +29,18 @@ public class OrbDash : MonoBehaviour
         if (collision.CompareTag("Player") && pm.airDashesRemaining != 1)
         {
             OrbCollect.Invoke();
-            gameObject.SetActive(false); 
+            StartCoroutine(RespawnOrb());
+            //gameObject.SetActive(false); 
         }
     }
-
+    private IEnumerator RespawnOrb()
+    {
+        SpriteRenderer.enabled = false;
+        Collider2D.enabled = false;
+        yield return new WaitForSeconds(5f);
+        SpriteRenderer.enabled = true;
+        Collider2D.enabled = true;
+    }
     public void TestMethod()
     {
         print("Orb Collected");

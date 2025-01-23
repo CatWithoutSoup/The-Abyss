@@ -1,0 +1,1249 @@
+fileFormatVersion: 2
+guid: 4db312859e4f5ea46a175f7c5ec26c55
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 28
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stalagmite Fall_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 33
+        width: 51
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0f3bcff51fc4c6448626ec0de9378e5
+      internalID: -1302234738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 32
+        width: 51
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a29bddcea604d4a904afe4d67278c5
+      internalID: -694007741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 31
+        width: 51
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b339363df8d56204db007fb41f5c6de3
+      internalID: -171155368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_3
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 30
+        width: 51
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5056141ab6975fe41a54ccb723b2aa65
+      internalID: 1246059157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_4
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 29
+        width: 51
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb6e2ce82d7e6e4488493263f83f62f
+      internalID: 1495560540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_5
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 28
+        width: 51
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 446be8e66f08df447909cdc0fa88931b
+      internalID: 451104902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_6
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 27
+        width: 51
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c59afdec86153042af4850dafd190e5
+      internalID: -165258108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_7
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 26
+        width: 51
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89806b4dee1e3814690ab5c927027e58
+      internalID: 2078423386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_8
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 25
+        width: 51
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ae6ad214c8c864582b33f96ef0f96f
+      internalID: 199189525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_9
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 25
+        width: 51
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d12331ec9a6f10489fbc3b73a6ab586
+      internalID: 1477163442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_10
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 24
+        width: 51
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4746791157ddc64db796aa5623e9991
+      internalID: 1212398248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_11
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 23
+        width: 51
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c8a7f120a877b84cbd19d2e8228cd83
+      internalID: 706140751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_12
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 22
+        width: 51
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41a9ed75dc0a2dd4e80ae8055f46e046
+      internalID: 434133898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_13
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 21
+        width: 39
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aec2152585c34441b4397874adcf1d7
+      internalID: -147509439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_14
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b97f665729eb343bccf5fbc245c569
+      internalID: 1582683319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_15
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 20
+        width: 39
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b91fa0d1dffd9da448dd6c8ee657ee42
+      internalID: 1269836744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_16
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c599b3e66d5d8214a9439644f3a46f4d
+      internalID: 1291582903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_17
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 19
+        width: 39
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 781fdaf0f9f690e459d7e0be81650f5b
+      internalID: 284251509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_18
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d6e8e566b113145a1ef0232d283642
+      internalID: -401196111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_19
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 18
+        width: 39
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409cb1a3371be0f418019aee3a759c39
+      internalID: -1933895311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_20
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a35071d41c3827a46b7ed8ef65edfd84
+      internalID: 1486982907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_21
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 17
+        width: 39
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0719044120728f478f0a8e1a4b834d8
+      internalID: 84277737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_22
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68de7cff6a66fcf418521233acee2faa
+      internalID: -1792909441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_23
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 16
+        width: 39
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 882e9d46674ba6a48bb633c62abbb2c2
+      internalID: -1506644220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_24
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3419218ff410448459a455aa5e590c69
+      internalID: 728513052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_25
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 15
+        width: 39
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc54543255994f248b85744f95747022
+      internalID: -635069955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_26
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a13ebc897f0dc4241bf65ff66a9b799e
+      internalID: 1263324342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_27
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 14
+        width: 39
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc9760ce31a9864e992cc5162ab668a
+      internalID: 2117914449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_28
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b787757d935621444819d1cf71075bf2
+      internalID: -637661739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_29
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 13
+        width: 39
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 532b264979c074944b072593d9a8f26b
+      internalID: -1042795121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_30
+      rect:
+        serializedVersion: 2
+        x: 1435
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c40904e1adef74899daea35fe047aa
+      internalID: 1027937218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_31
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 12
+        width: 39
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2c3f77b48b9c24b8739972a6f94b1e
+      internalID: -617537039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_32
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9611acaf3e4d5814faa16a1d7898416c
+      internalID: 934271962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_33
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 11
+        width: 39
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9a6602135c5954aaeee3fce3bbd438
+      internalID: -544003400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_34
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be616d0e9c92504ca7ec651a0f21534
+      internalID: 76055689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_35
+      rect:
+        serializedVersion: 2
+        x: 1596
+        y: 10
+        width: 39
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9cc1ead862300e4a8495ec1835d89f3
+      internalID: -2133664907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_36
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 867b9f93a8dd59d469b839969697ff1c
+      internalID: -1856612683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_37
+      rect:
+        serializedVersion: 2
+        x: 1662
+        y: 9
+        width: 39
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7267051ed6a738d479dbe24134f10578
+      internalID: -1624262602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_38
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037c7608c30cbf74bbc2e88ba0d507f9
+      internalID: -1905587023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_39
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 8
+        width: 39
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ffd17e69863ae4cacf117762cb307a
+      internalID: -503194083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_40
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f7d8e5d705d3874ba48c4371a2b1f65
+      internalID: 243140731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_41
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 70
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e9dcfe5a46e1c4a99865acc41b85ad
+      internalID: -105182020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_42
+      rect:
+        serializedVersion: 2
+        x: 1831
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22af4e18a504c55418437da39f753862
+      internalID: -1680547308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_43
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 70
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 358a46f2d24c4f0439a78174d18bf531
+      internalID: 2144300240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_44
+      rect:
+        serializedVersion: 2
+        x: 1897
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 994d864807681e749b15e5713135b5fd
+      internalID: 621247995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_45
+      rect:
+        serializedVersion: 2
+        x: 1926
+        y: 70
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d0aeb9314a71f84b80a1afd1331134f
+      internalID: 276964910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_46
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 81
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11521ccaf1870fe4285e3b3f78e96ef7
+      internalID: -1161852801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_47
+      rect:
+        serializedVersion: 2
+        x: 1804
+        y: 7
+        width: 29
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91be486e76d4b37428efce8236294ed4
+      internalID: -1962159045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_48
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 6
+        width: 29
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f26e46cd80cb4584ea9f4e90e5362a39
+      internalID: -13568749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_49
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 5
+        width: 29
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37cd4ce03ff9b1b4ab61d644f044aab8
+      internalID: -646418919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stalagmite Fall_50
+      rect:
+        serializedVersion: 2
+        x: 1926
+        y: 70
+        width: 51
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aa3f5dd2f5b4d944af51fd7844d264c
+      internalID: -1624554924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Stalagmite Fall_0: -1302234738
+      Stalagmite Fall_1: -694007741
+      Stalagmite Fall_10: 1212398248
+      Stalagmite Fall_11: 706140751
+      Stalagmite Fall_12: 434133898
+      Stalagmite Fall_13: -147509439
+      Stalagmite Fall_14: 1582683319
+      Stalagmite Fall_15: 1269836744
+      Stalagmite Fall_16: 1291582903
+      Stalagmite Fall_17: 284251509
+      Stalagmite Fall_18: -401196111
+      Stalagmite Fall_19: -1933895311
+      Stalagmite Fall_2: -171155368
+      Stalagmite Fall_20: 1486982907
+      Stalagmite Fall_21: 84277737
+      Stalagmite Fall_22: -1792909441
+      Stalagmite Fall_23: -1506644220
+      Stalagmite Fall_24: 728513052
+      Stalagmite Fall_25: -635069955
+      Stalagmite Fall_26: 1263324342
+      Stalagmite Fall_27: 2117914449
+      Stalagmite Fall_28: -637661739
+      Stalagmite Fall_29: -1042795121
+      Stalagmite Fall_3: 1246059157
+      Stalagmite Fall_30: 1027937218
+      Stalagmite Fall_31: -617537039
+      Stalagmite Fall_32: 934271962
+      Stalagmite Fall_33: -544003400
+      Stalagmite Fall_34: 76055689
+      Stalagmite Fall_35: -2133664907
+      Stalagmite Fall_36: -1856612683
+      Stalagmite Fall_37: -1624262602
+      Stalagmite Fall_38: -1905587023
+      Stalagmite Fall_39: -503194083
+      Stalagmite Fall_4: 1495560540
+      Stalagmite Fall_40: 243140731
+      Stalagmite Fall_41: -105182020
+      Stalagmite Fall_42: -1680547308
+      Stalagmite Fall_43: 2144300240
+      Stalagmite Fall_44: 621247995
+      Stalagmite Fall_45: 276964910
+      Stalagmite Fall_46: -1161852801
+      Stalagmite Fall_47: -1962159045
+      Stalagmite Fall_48: -13568749
+      Stalagmite Fall_49: -646418919
+      Stalagmite Fall_5: 451104902
+      Stalagmite Fall_50: -1624554924
+      Stalagmite Fall_6: -165258108
+      Stalagmite Fall_7: 2078423386
+      Stalagmite Fall_8: 199189525
+      Stalagmite Fall_9: 1477163442
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

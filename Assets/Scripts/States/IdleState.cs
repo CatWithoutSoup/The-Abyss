@@ -22,7 +22,7 @@ public class IdleState : Grounded
     {
         base.HandleInput();
         dash = Input.GetKey(KeyCode.C);
-        jump = Input.GetKey(KeyCode.Z);
+        jump = Input.GetKeyDown(KeyCode.Z);
         if (Input.GetAxis("Horizontal") != 0)
             run = true;
     }

@@ -1,56 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WallGrabState : State
 {
+    private bool jumpControl;
+    private int jumpIter;
+    private float jumpForceVertical = 3f;
+    private int jumpValueIterVertical = 60;
     public WallGrabState(PlayerMovement player, StateMachine stateMachine) : base(player, stateMachine) { }
 
     public override void Enter()
     {
         base.Enter();
-        //player.rb.gravityScale = 0;  // Останавливаем падение
-        //player.rb.velocity = Vector2.zero;  // Сбрасываем скорость
+        jumpControl = false;
+        jumpIter = 0;
     }
 
-    public override void HandleInput()
-    {
-        base.HandleInput();
-        if (Input.GetKeyUp(KeyCode.Z))
-        {
-            player.jumpHoldTime = 0;
-        }
-    }
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
-        if (player.isWalled && Input.GetAxisRaw("Vertical") > 0)
+        if (player.isWalled && player.rb.velocity.y < 0 && !Input.GetKey(KeyCode.X))
         {
             stateMachine.ChangeState(player.slide);
         }
         if (!player.isWalled || Input.GetKeyUp(KeyCode.X))
         {
-            stateMachine.ChangeState(player.fall);  // Переход в состояние падения, если игрок отпускает кнопку или больше не цепляется
+            stateMachine.ChangeState(player.fall);  
         }
-        else if (Input.GetKey(KeyCode.X) && Input.GetAxisRaw("Vertical") != 0)
+        else if (Input.GetKey(KeyCode.X) && player.rb.velocity.y != 0)
         {
-            stateMachine.ChangeState(player.climb);  // Переход в состояние лазания по стене
+            stateMachine.ChangeState(player.climb);
         }
         else if (Input.GetKey(KeyCode.Z))
         {
-            stateMachine.ChangeState(player.fall);
+            jumpIter = 0;
+            jumpControl = true;
+            PerformWallClimbJump();
+        }
+    }
+    private void PerformWallClimbJump()
+    {
+        if (jumpControl)
+        {
+            // Логика контролируемого прыжка строго вертикально вверх
+            if (jumpIter++ < jumpValueIterVertical)
+            {
+                float verticalForce = jumpForceVertical / (jumpIter / 2f); // Вертикальная составляющая
+                player.rb.velocity = new Vector2(0, verticalForce);
+
+            }
+            else
+            {
+                // Сбрасываем итерации, флаги и завершаем прыжок
+                jumpIter = 0;
+                jumpControl = false;
+            }
         }
     }
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        player.anim.SetBool("WallGrab", player.wallGrab);
     }
     public override void Exit()
     {
         base.Exit();
-
-        //player.rb.gravityScale = player.gravityDef;  // Восстанавливаем стандартную гравитацию
     }
 }
